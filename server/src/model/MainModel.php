@@ -1,15 +1,17 @@
 <?php
 
+use DB\SQL;
+
 class MainModel
 {
-    protected object $db;
+    private SQL $db;
 
-    public function __construct(object $db)
+    public function __construct(SQL $db)
     {
         $this->db = $db;
     }
 
-    protected function getDb(): object
+    protected function getDb(): SQL
     {
         return $this->db;
     }

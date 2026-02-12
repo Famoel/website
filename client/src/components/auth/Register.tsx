@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/fetch/useAuth";
 import { useMessage } from "../../hooks/useMessage";
 import type { IRegisterForm } from "../../interface/auth/IRegisterForm";
 import { CLIENT_ROUTES } from "../../routes/client-routes";
-import { Message } from "../Message";
+import { Message } from "../common/Message";
 
 const initialForm: IRegisterForm = {
   username: "",
@@ -29,7 +29,7 @@ export const Register = () => {
       if (!value) {
         setMsg({
           message: "Bitte alle Felder ausfüllen",
-          success: false,
+          isErrorMsg: true,
           flag: MESSAGE_FLAG.AUTH.REGISTER_USER,
         });
 
@@ -47,7 +47,15 @@ export const Register = () => {
 
     const resRegister = await register(formData);
 
-    console.log(resRegister);
+    if (resRegister.message) {
+      setMsg({
+        message: resRegister.message,
+        isErrorMsg: resRegister.isErrorMsg,
+        flag: MESSAGE_FLAG.AUTH.REGISTER_USER,
+      });
+    }
+
+    if (!resRegister.isErrorMsg) setForm(initialForm);
   };
 
   return (
@@ -57,7 +65,7 @@ export const Register = () => {
       className="bg-primary flex flex-col gap-3 rounded p-3"
     >
       {msg.message && msg.flag === MESSAGE_FLAG.AUTH.REGISTER_USER && (
-        <Message message={msg.message} success={msg.success} />
+        <Message message={msg.message} isErrorMsg={msg.isErrorMsg} />
       )}
 
       <input

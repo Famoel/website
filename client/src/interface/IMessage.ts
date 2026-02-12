@@ -1,5 +1,5 @@
 export interface IMessage {
   message: string;
-  success: boolean;
+  isErrorMsg: boolean;
   flag?: string;
 }

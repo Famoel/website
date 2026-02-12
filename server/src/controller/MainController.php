@@ -3,9 +3,14 @@
 class MainController
 {
     protected UsersModel $UsersModel;
+    protected Message $Message;
 
     public function __construct(Base $f3)
     {
-        $this->UsersModel = new UsersModel($f3->get("DB"));
+        // MODELS
+        $this->UsersModel = new UsersModel($f3->get(DATABASE));
+
+        // LIB
+        $this->Message = new Message();
     }
 }

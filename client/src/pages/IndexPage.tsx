@@ -1,3 +1,7 @@
 export const IndexPage = () => {
-  return <p>Test</p>;
+  return (
+    <div>
+      <p>Index Page</p>
+    </div>
+  );
 };
