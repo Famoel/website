@@ -55,7 +55,7 @@ export const Register = () => {
       });
     }
 
-    if (!resRegister.isErrorMsg) setForm(initialForm);
+    if (resRegister.isValid) setForm(initialForm);
   };
 
   return (

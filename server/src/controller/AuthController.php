@@ -53,17 +53,16 @@ class AuthController extends MainController
             return;
         }
 
-        $uuid = Uuid::uuid4()->toString();
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
+        $uuid       = Uuid::uuid4()->toString();
+        $hash       = password_hash($password, PASSWORD_DEFAULT);
         $createUser = $this->UsersModel->createUser($uuid, $username, $email, $hash);
 
         if (! $createUser) {
-            throw new Exception("Der Benutzer konnte nicht registriert werden!");
+            throw new Exception("Register User: Error creating user in database!");
         }
 
         $this->Message->setMessage("Du wurdest erfolgreich registriert!", false);
 
-        echo json_encode($this->Message->getMessage());
+        echo json_encode([...$this->Message->getMessage(), "isValid" => true]);
     }
 }

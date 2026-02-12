@@ -16,7 +16,7 @@ export const useAuth = () => {
     }
 
     return {
-      success: false,
+      isErrorMsg: true,
       message: "",
     };
   };
