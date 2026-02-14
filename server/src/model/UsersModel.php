@@ -21,4 +21,14 @@ class UsersModel extends MainModel
 
         return (bool) $insert;
     }
+
+    public function getUserFromEmail(string $email): array
+    {
+        $select = $this->getDb()->exec(
+            "SELECT `password`, `name`, `created` FROM `users` WHERE `email` = :email",
+            ["email" => $email]
+        );
+
+        return (array) $select[0];
+    }
 }

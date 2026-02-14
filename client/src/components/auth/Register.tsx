@@ -28,7 +28,7 @@ export const Register = () => {
     Object.values(form).forEach((value) => {
       if (!value) {
         setMsg({
-          message: "Bitte alle Felder ausfüllen",
+          message: "Bitte alle Felder ausfüllen!",
           isErrorMsg: true,
           flag: MESSAGE_FLAG.AUTH.REGISTER_USER,
         });

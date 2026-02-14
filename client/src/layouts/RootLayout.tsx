@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
-import { Login } from "../components/auth/Login";
 import { CLIENT_ROUTES } from "../routes/client-routes";
+import { Login } from "../components/auth/Login";
 
 export const RootLayout = () => {
   const location = useLocation();

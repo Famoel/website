@@ -12,10 +12,7 @@ class AuthController extends MainController
         $password     = trim($_POST["password"]);
 
         if ($username == "" || $email == "" || $confirmEmail == "" || $password == "") {
-            $this->Message->setMessage("Bitte alle Felder ausfüllen!", true);
-
-            echo json_encode($this->Message->getMessage());
-            return;
+            throw new Exception("Register User: Username, Email or Password is empty!");
         }
 
         if (strlen($username) > USERNAME_LENGTH) {
@@ -63,6 +60,37 @@ class AuthController extends MainController
 
         $this->Message->setMessage("Du wurdest erfolgreich registriert!", false);
 
-        echo json_encode([...$this->Message->getMessage(), "isValid" => true]);
+        $data = [
+             ...$this->Message->getMessage(),
+            "isValid" => true,
+        ];
+
+        echo json_encode($data);
+    }
+
+    public function loginUser()
+    {
+        $email    = trim($_POST["email"]);
+        $password = trim($_POST["password"]);
+
+        if ($email == "" || $password == "") {
+            throw new Exception("Login User: Email or Password is empty!");
+        }
+
+        $user = $this->UsersModel->getUserFromEmail($email);
+
+        if (! password_verify($password, $user["password"])) {
+            $this->Message->setMessage("Die Login Daten sind nicht korrekt!", true);
+
+            echo json_encode($this->Message->getMessage());
+            return;
+        }
+
+        $data = [
+            "isValid"  => true,
+            "username" => $user["name"],
+        ];
+
+        echo json_encode($data);
     }
 }

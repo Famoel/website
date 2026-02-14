@@ -10,7 +10,7 @@ class MainController
         // MODELS
         $this->UsersModel = new UsersModel($f3->get(DATABASE));
 
-        // LIB
+        //
         $this->Message = new Message();
     }
 }

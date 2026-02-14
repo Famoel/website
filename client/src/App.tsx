@@ -11,6 +11,7 @@ export const App = () => {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<IndexPage />} />
+
           <Route
             path={CLIENT_ROUTES.ROOT.REGISTER}
             element={<RegisterPage />}
