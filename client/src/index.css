@@ -3,14 +3,18 @@
 @theme {
   --color-background: #222831;
   --color-primary: #393e46;
+  --color-accent: rgb(48, 46, 44);
   --color-text: #dcdcdc;
   --color-secondary: #f2f2f2;
-  --color-call-to-action: hsl(26, 100%, 49%);
-  --color-call-to-action-hover: hsl(26, 100%, 60%);
+  --color-call-to-action: hsl(290, 83%, 65%);
+  --color-call-to-action-hover: hsl(290, 83%, 45%);
+
+  --shadow-inset-top: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+  --shadow-inset-bottom: inset 0 -2px 10px rgba(0, 0, 0, 0.8);
 }
 
 body {
-  @apply bg-background text-text mx-auto max-w-480 min-w-92;
+  @apply bg-background text-text mx-auto max-w-480 min-w-92 text-sm xl:text-base;
 }
 
 /* BASE */
@@ -20,7 +24,7 @@ input {
 }
 
 button {
-  @apply rounded px-3 py-0.5 font-bold text-black uppercase transition-all duration-500 ease-in hover:cursor-pointer;
+  @apply transform rounded px-3 py-0.5 font-bold text-black uppercase transition-all duration-500 ease-in hover:cursor-pointer;
 }
 
 a {
@@ -30,11 +34,11 @@ a {
 /* COMPONENTS */
 
 .base-layout {
-  @apply flex h-screen flex-col gap-3 p-1.5;
+  @apply flex h-screen max-h-screen flex-col gap-3 p-1.5;
 }
 
 .base-layout > main {
-  @apply relative grow;
+  @apply grow;
 }
 
 .base-btn {
@@ -49,11 +53,31 @@ a {
   animation: fade-in 0.5s ease-in-out;
 }
 
+/* ANIMATIONS */
+
 @keyframes fade-in {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
