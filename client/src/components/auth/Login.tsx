@@ -58,8 +58,6 @@ export const Login = () => {
 
     if (resLogin.isValid) {
       /* session start */
-
-      console.log(resLogin);
     }
   };
 
