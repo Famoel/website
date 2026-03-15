@@ -21,7 +21,10 @@ export const App = () => {
         </Route>
 
         <Route element={<ProtectedLayout />}>
-          <Route path="/overview" element={<OverviewPage />} />
+          <Route
+            path={CLIENT_ROUTES.PROTECTED.OVERVIEW}
+            element={<OverviewPage />}
+          />
         </Route>
       </Routes>
     </Router>
