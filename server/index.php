@@ -25,4 +25,8 @@ $f3->set(DATABASE,
 $f3->route("POST /auth/register-user", "AuthController->registerUser");
 $f3->route("POST /auth/login-user", "AuthController->loginUser");
 
+// CHAT
+$f3->route("POST /chat/send", "ChatController->send");
+$f3->route("GET /chat/data", "ChatController->getData");
+
 $f3->run();
