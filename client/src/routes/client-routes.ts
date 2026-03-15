@@ -1,6 +1,10 @@
 export const CLIENT_ROUTES = {
-    ROOT: {
-        INDEX: "/",
-        REGISTER: "/register"
-    }
+  ROOT: {
+    INDEX: "/",
+    REGISTER: "/register",
+  },
+
+  PROTECTED: {
+    OVERVIEW: "/overview",
+  },
 };
