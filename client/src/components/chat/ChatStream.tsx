@@ -1,7 +1,68 @@
-import type { IChatStream } from "../../interface/chat/IChatStream";
+import { isEqual } from "lodash";
+import { useEffect, useRef, useState } from "react";
+import { useChat } from "../../hooks/fetch/useChat";
+import type { IChatContent } from "../../interface/chat/IChatContent";
+import { ChatContent } from "./ChatContent";
 
-export const ChatStream = ({ children }: IChatStream) => {
+const initialChat: IChatContent[] = [
+  {
+    message: "",
+    author: "",
+    created: "",
+  },
+];
+
+export const ChatStream = () => {
+  const [data, setData] = useState<IChatContent[]>(initialChat);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { getData } = useChat();
+
+  /* first render */
+  useEffect(() => {
+    update();
+  }, []);
+
+  /* update */
+  useEffect(() => {
+    const intervalId = setInterval(async () => {
+      await update();
+    }, 700);
+
+    if (ref.current) ref.current.scrollIntoView({ behavior: "smooth" });
+
+    return () => clearInterval(intervalId);
+  }, [data]);
+
+  const update = async () => {
+    const resData: IChatContent[] = await getData();
+
+    if (resData && !isEqual(resData, data)) {
+      setData(resData);
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-5 overflow-auto p-5">{children}</div>
+    <div className="flex flex-col gap-5 overflow-auto p-5">
+      {data.map((chat, idx) => {
+        /* date format */
+        const createDate = new Date(chat.created);
+        const formattedDate = createDate.toLocaleDateString("de-DE", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        return (
+          <ChatContent
+            key={idx}
+            author={chat.author}
+            message={chat.message}
+            created={formattedDate.split(",")[1]}
+          />
+        );
+      })}
+
+      <div ref={ref}></div>
+    </div>
   );
 };
