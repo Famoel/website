@@ -4,6 +4,11 @@ export const SERVER_ROUTES = {
     LOGIN_USER: "/auth/login-user",
   },
 
+  SESSION: {
+    START_SESSION: "/session/start",
+    CHECK_SESSION: "/session/check",
+  },
+
   CHAT: {
     SEND: "/chat/send",
     DATA: "/chat/data",

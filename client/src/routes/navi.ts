@@ -1,25 +1,38 @@
+import { ICONS } from "../data/icons";
 import type { INavroute } from "../interface/nav/INavroute";
 import { CLIENT_ROUTES } from "./client-routes";
 
 export const NAVI: INavroute[] = [
   {
     to: CLIENT_ROUTES.ROOT.INDEX,
-    label: "Home",
+    label: "Übersicht",
+    img: ICONS.home,
   },
   {
     to: CLIENT_ROUTES.ROOT.REGISTER,
-    label: "Register",
+    label: "Planer",
+    img: ICONS.calendar,
   },
   {
     to: CLIENT_ROUTES.ROOT.REGISTER,
-    label: "Register",
+    label: "Post",
+    img: ICONS.mail,
   },
   {
     to: CLIENT_ROUTES.ROOT.REGISTER,
-    label: "Register",
+    label: "Profil",
+    img: ICONS.profile,
   },
   {
     to: CLIENT_ROUTES.ROOT.REGISTER,
-    label: "Register",
+    label: "Dashboard",
+    img: ICONS.settings,
+  },
+  {
+    to: CLIENT_ROUTES.ROOT.REGISTER,
+    label: "Logout",
+    img: ICONS.exit,
+    logout: true,
+    logoutFunc: () => {},
   },
 ];
