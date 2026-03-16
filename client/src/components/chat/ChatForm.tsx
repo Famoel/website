@@ -1,6 +1,8 @@
 import { useEffect, useState, type SubmitEvent } from "react";
+import { useSelector } from "react-redux";
 import { useChat } from "../../hooks/fetch/useChat";
 import { type IChatForm } from "../../interface/chat/IChatForm";
+import type { RootState } from "../../redux/store";
 
 const initialForm: IChatForm = {
   author: "",
@@ -9,14 +11,17 @@ const initialForm: IChatForm = {
 
 export const ChatForm = () => {
   const [form, setForm] = useState<IChatForm>(initialForm);
+  const reduxUser = useSelector((state: RootState) => state.user);
 
   const { send } = useChat();
 
-  const author = "GentlmenLike";
-
   useEffect(() => {
-    setForm((prev) => ({ ...prev, author }));
-  }, [form.author]);
+    setForm((prev) => ({
+      ...prev,
+      author: reduxUser.username,
+    }));
+    
+  }, [form.author, reduxUser.username]);
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();

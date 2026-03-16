@@ -9,7 +9,7 @@ export const ChatContent = ({ author, message, created }: IChatContent) => {
         </p>
         <p>{created}</p>
       </div>
-      <div className="bg-accent max-h-28 min-h-14 overflow-y-auto rounded-2xl border p-1.5 wrap-break-word whitespace-pre-wrap">
+      <div className="bg-accent min-h-14 rounded-2xl p-1.5 wrap-break-word whitespace-pre-wrap">
         <p>{message}</p>
       </div>
     </div>

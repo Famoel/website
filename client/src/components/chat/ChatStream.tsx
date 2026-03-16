@@ -43,11 +43,13 @@ export const ChatStream = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 overflow-auto p-5">
+    <div className="flex h-full flex-col gap-5 overflow-auto p-5">
       {data.map((chat, idx) => {
         /* date format */
         const createDate = new Date(chat.created);
         const formattedDate = createDate.toLocaleDateString("de-DE", {
+          day: "2-digit",
+          month: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
         });
@@ -57,7 +59,7 @@ export const ChatStream = () => {
             key={idx}
             author={chat.author}
             message={chat.message}
-            created={formattedDate.split(",")[1]}
+            created={formattedDate.replace(",", " | ")}
           />
         );
       })}
