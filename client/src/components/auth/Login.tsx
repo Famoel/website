@@ -1,7 +1,9 @@
 import { useState, type SubmitEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MESSAGE_FLAG } from "../../flags/message-flag";
+import { SESSION_FLAG } from "../../flags/session-flags";
 import { useAuth } from "../../hooks/fetch/useAuth";
+import { useSession } from "../../hooks/fetch/useSession";
 import { useMessage } from "../../hooks/useMessage";
 import type { ILoginForm } from "../../interface/auth/ILoginForm";
 import { CLIENT_ROUTES } from "../../routes/client-routes";
@@ -14,8 +16,10 @@ const initialForm: ILoginForm = {
 
 export const Login = () => {
   const [form, setForm] = useState<ILoginForm>(initialForm);
+  const navigate = useNavigate();
 
   const { login } = useAuth();
+  const { startSession } = useSession();
   const { msg, setMsg } = useMessage();
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
@@ -58,6 +62,19 @@ export const Login = () => {
 
     if (resLogin.isValid) {
       /* session start */
+      const resSession = await startSession(resLogin.username);
+
+      if (!resSession.isValid)
+        return console.error("Start Session is not valid!");
+
+      sessionStorage.setItem(
+        SESSION_FLAG.SESSION_USERNAME,
+        resSession.username,
+      );
+
+      sessionStorage.setItem(SESSION_FLAG.SESSION_TOKEN, resSession.token);
+
+      navigate(CLIENT_ROUTES.PROTECTED.OVERVIEW);
     }
   };
 
