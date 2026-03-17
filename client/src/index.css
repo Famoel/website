@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
+}
+
 @theme {
   --color-background: #222831;
   --color-primary: #393e46;
   --color-accent: rgb(48, 46, 44);
   --color-text: #dcdcdc;
   --color-secondary: #f2f2f2;
-  --color-call-to-action: hsl(290, 83%, 65%);
-  --color-call-to-action-hover: hsl(290, 83%, 45%);
+  --color-call-to-action: hsl(223, 83%, 65%);
+  --color-call-to-action-hover: hsl(223, 83%, 55%);
+
+  --font-inter: "Inter", sans-serif;
 
   --shadow-inset-top: inset 0 2px 10px rgba(0, 0, 0, 0.8);
   --shadow-inset-bottom: inset 0 -2px 10px rgba(0, 0, 0, 0.8);
 }
 
 body {
-  @apply bg-background text-text mx-auto max-w-480 min-w-92 text-sm xl:text-base;
+  @apply font-inter bg-background text-text mx-auto max-w-480 min-w-92 text-sm xl:text-base;
 }
 
 /* BASE */
@@ -24,14 +31,17 @@ input {
 }
 
 button {
-  @apply transform rounded px-3 py-0.5 font-bold text-black uppercase transition-all duration-500 ease-in hover:cursor-pointer;
+  @apply transform rounded px-3 py-0.5 font-bold text-black uppercase transition-all duration-300 ease-in hover:cursor-pointer;
 }
 
-a {
-  @apply text-sm italic underline underline-offset-2;
+select {
+  @apply bg-secondary rounded px-2 py-1 font-semibold text-black hover:cursor-pointer;
 }
 
 /* COMPONENTS */
+.index-img {
+  @apply aspect-16/9 object-cover mx-auto;
+}
 
 .base-layout {
   @apply flex h-screen max-h-screen flex-col gap-3 p-1.5;
@@ -46,6 +56,10 @@ a {
 }
 
 .base-link {
+  @apply transform text-sm italic underline underline-offset-2 transition-all duration-200 ease-in hover:scale-105;
+}
+
+.base-link-primary {
   @apply text-text hover:text-slate-300;
 }
 
