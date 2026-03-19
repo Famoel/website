@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("./fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
+  src: url("../public/fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
 }
 
 @theme {
@@ -39,9 +39,6 @@ select {
 }
 
 /* COMPONENTS */
-.index-img {
-  @apply aspect-16/9 object-cover mx-auto;
-}
 
 .base-layout {
   @apply flex h-screen max-h-screen flex-col gap-3 p-1.5;
@@ -56,7 +53,7 @@ select {
 }
 
 .base-link {
-  @apply transform text-sm italic underline underline-offset-2 transition-all duration-200 ease-in hover:scale-105;
+  @apply transform text-sm italic underline underline-offset-2 font-semibold;
 }
 
 .base-link-primary {
