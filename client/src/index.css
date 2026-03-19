@@ -53,11 +53,15 @@ select {
 }
 
 .base-link {
-  @apply transform text-sm italic underline underline-offset-2 font-semibold;
+  @apply transform text-sm font-semibold italic underline underline-offset-2;
 }
 
 .base-link-primary {
   @apply text-text hover:text-slate-300;
+}
+
+.nav-link {
+  @apply flex items-center gap-3 rounded-2xl bg-linear-to-r from-amber-700 to-amber-900 px-2 py-1 font-bold uppercase no-underline hover:bg-linear-to-r hover:from-amber-900 hover:to-amber-700;
 }
 
 .msg {

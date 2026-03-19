@@ -2,7 +2,7 @@ import { useEffect, useState, type SubmitEvent } from "react";
 import { useSelector } from "react-redux";
 import { useChat } from "../../hooks/fetch/useChat";
 import { type IChatForm } from "../../interface/chat/IChatForm";
-import type { RootState } from "../../redux/store";
+import type { TRootState } from "../../redux/store";
 
 const initialForm: IChatForm = {
   author: "",
@@ -11,7 +11,7 @@ const initialForm: IChatForm = {
 
 export const ChatForm = () => {
   const [form, setForm] = useState<IChatForm>(initialForm);
-  const reduxUser = useSelector((state: RootState) => state.user);
+  const reduxUser = useSelector((state: TRootState) => state.user);
 
   const { send } = useChat();
 
