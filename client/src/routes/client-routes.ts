@@ -6,5 +6,6 @@ export const CLIENT_ROUTES = {
 
   PROTECTED: {
     OVERVIEW: "/overview",
+    PROFILE: "/profile",
   },
 };

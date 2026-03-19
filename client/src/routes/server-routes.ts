@@ -13,4 +13,15 @@ export const SERVER_ROUTES = {
     SEND: "/chat/send",
     DATA: "/chat/data",
   },
+
+  CLASS_LIST: {
+    GET_CLASS_LIST: "/class-list/get-class-list",
+  },
+
+  USER_CHARACTER: {
+    USER_CHARACTER_LIST: "/user-character/user-character-list",
+    CREATE_CHARACTER: "/user-character/create-character",
+    UPDATE_CHARACTER: "/user-character/update-character",
+    DELETE_CHARACTER: "/user-character/delete-character",
+  },
 };

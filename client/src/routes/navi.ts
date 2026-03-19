@@ -4,7 +4,7 @@ import { CLIENT_ROUTES } from "./client-routes";
 
 export const NAVI: INavroute[] = [
   {
-    to: CLIENT_ROUTES.ROOT.INDEX,
+    to: CLIENT_ROUTES.PROTECTED.OVERVIEW,
     label: "Übersicht",
     img: ICONS.home,
   },
@@ -19,7 +19,7 @@ export const NAVI: INavroute[] = [
     img: ICONS.mail,
   },
   {
-    to: CLIENT_ROUTES.ROOT.REGISTER,
+    to: CLIENT_ROUTES.PROTECTED.PROFILE,
     label: "Profil",
     img: ICONS.profile,
   },

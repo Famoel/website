@@ -4,6 +4,7 @@ import { ProtectedLayout } from "./layouts/ProtectedLayout";
 import { RootLayout } from "./layouts/RootLayout";
 import { IndexPage } from "./pages/IndexPage";
 import { OverviewPage } from "./pages/OverviewPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { CLIENT_ROUTES } from "./routes/client-routes";
 
@@ -11,6 +12,7 @@ export const App = () => {
   return (
     <Router>
       <Routes>
+        {/* root */}
         <Route element={<RootLayout />}>
           <Route index element={<IndexPage />} />
 
@@ -20,10 +22,16 @@ export const App = () => {
           />
         </Route>
 
+        {/* protected */}
         <Route element={<ProtectedLayout />}>
           <Route
             path={CLIENT_ROUTES.PROTECTED.OVERVIEW}
             element={<OverviewPage />}
+          />
+
+          <Route
+            path={CLIENT_ROUTES.PROTECTED.PROFILE}
+            element={<ProfilePage />}
           />
         </Route>
       </Routes>
