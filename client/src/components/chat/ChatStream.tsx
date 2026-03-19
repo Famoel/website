@@ -37,13 +37,11 @@ export const ChatStream = () => {
   const update = async () => {
     const resData: IChatContent[] = await getData();
 
-    if (resData && !isEqual(resData, data)) {
-      setData(resData);
-    }
+    if (resData && !isEqual(resData, data)) setData(resData);
   };
 
   return (
-    <div className="flex h-full flex-col gap-5 overflow-auto p-5">
+    <div className="flex h-[65vh] flex-col gap-5 overflow-auto p-5">
       {data.map((chat, idx) => {
         /* date format */
         const createDate = new Date(chat.created);

@@ -108,7 +108,10 @@ export const Register = () => {
         Registrieren
       </button>
 
-      <Link to={CLIENT_ROUTES.ROOT.INDEX} className="base-link self-start">
+      <Link
+        to={CLIENT_ROUTES.ROOT.INDEX}
+        className="base-link base-link-primary self-start"
+      >
         {" > Zum Login"}
       </Link>
     </form>

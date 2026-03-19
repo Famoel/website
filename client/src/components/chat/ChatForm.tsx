@@ -20,7 +20,6 @@ export const ChatForm = () => {
       ...prev,
       author: reduxUser.username,
     }));
-    
   }, [form.author, reduxUser.username]);
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {

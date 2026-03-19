@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
+import { Sidebar } from "../components/nav/Sidebar";
 import { SESSION_FLAG } from "../flags/session-flags";
 import { useSession } from "../hooks/fetch/useSession";
 import { setUsername } from "../redux/slice/userSlice";
@@ -50,7 +51,7 @@ export const ProtectedLayout = () => {
       resCheckSession.username,
     );
 
-    // set redux store
+    // set username on redux store
     dispatch(setUsername(resCheckSession.username));
   };
 
@@ -58,8 +59,16 @@ export const ProtectedLayout = () => {
     <div className="base-layout">
       <Header />
 
-      <main>
-        <Outlet />
+      <main className="flex gap-2.5">
+        {/* sidebar */}
+        <div className="xl:w-[13%]">
+          <Sidebar />
+        </div>
+
+        {/* content */}
+        <div className="grow">
+          <Outlet />
+        </div>
       </main>
 
       <Footer />

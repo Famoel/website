@@ -17,8 +17,8 @@ class SessionController extends MainController
             throw new Exception("Start Session: Username does not exist!");
         }
 
-        // string token with 100 characters
-        $token = bin2hex(random_bytes(100));
+        // string token with 100 bytes length
+        $token = bin2hex(random_bytes(SESSION_TOKEN_LENGTH));
 
         $isValid = false;
 

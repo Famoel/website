@@ -111,11 +111,17 @@ export const Login = () => {
       </form>
 
       <div className="mt-1 flex justify-between">
-        <Link to={CLIENT_ROUTES.ROOT.REGISTER} className="base-link">
+        <Link
+          to={CLIENT_ROUTES.ROOT.REGISTER}
+          className="base-link base-link-primary"
+        >
           {" > Registrieren?"}
         </Link>
 
-        <Link to={CLIENT_ROUTES.ROOT.REGISTER} className="base-link">
+        <Link
+          to={CLIENT_ROUTES.ROOT.REGISTER}
+          className="base-link base-link-primary"
+        >
           {" > Passwort vergessen?"}
         </Link>
       </div>

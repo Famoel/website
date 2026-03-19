@@ -77,6 +77,13 @@ class AuthController extends MainController
             throw new Exception("Login User: Email or Password is empty!");
         }
 
+        if ($this->UsersModel->countUserFromEmail($email) === 0) {
+            $this->Message->setMessage("Die Login Daten sind nicht korrekt!", true);
+
+            echo json_encode($this->Message->getMessage());
+            return;
+        }
+
         $user = $this->UsersModel->getUserFromEmail($email);
 
         if (! password_verify($password, $user["password"])) {
