@@ -12,11 +12,31 @@ export const NAVI: INavroute[] = [
     to: CLIENT_ROUTES.ROOT.REGISTER,
     label: "Planer",
     img: ICONS.calendar,
+    children: [
+      {
+        to: CLIENT_ROUTES.ROOT.REGISTER,
+        label: "- Raid Übersicht",
+      },
+      {
+        to: CLIENT_ROUTES.ROOT.REGISTER,
+        label: "- Raid Planen",
+      },
+    ],
   },
   {
     to: CLIENT_ROUTES.ROOT.REGISTER,
     label: "Post",
     img: ICONS.mail,
+    children: [
+      {
+        to: CLIENT_ROUTES.ROOT.REGISTER,
+        label: "- Eingang",
+      },
+      {
+        to: CLIENT_ROUTES.ROOT.REGISTER,
+        label: "- Ausgang",
+      },
+    ],
   },
   {
     to: CLIENT_ROUTES.PROTECTED.PROFILE,
