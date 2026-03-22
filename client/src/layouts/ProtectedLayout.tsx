@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
 import { Sidebar } from "../components/nav/Sidebar";
-import { SESSION_FLAG } from "../flags/session-flags";
+import { SESSION_FLAG } from "../flags/session-flag";
 import { useSession } from "../hooks/fetch/useSession";
 import { setUsername } from "../redux/slice/userSlice";
 import { CLIENT_ROUTES } from "../routes/client-routes";
