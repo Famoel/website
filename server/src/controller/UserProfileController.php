@@ -48,7 +48,7 @@ class UserProfileController extends MainController
         echo json_encode([ ...$this->Message->getMessage(), "isValid" => $isValid]);
     }
 
-    public function userCharacterList()
+    public function getUserCharacterList()
     {
         if (! isset($_GET["username"])) {
             throw new Exception("User Profile, user Character List: Username is empty!");
