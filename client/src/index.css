@@ -38,14 +38,26 @@ select {
   @apply bg-secondary rounded px-2 py-1 font-semibold text-black hover:cursor-pointer;
 }
 
+label {
+  @apply flex flex-col gap-1;
+}
+
+label p {
+  @apply font-bold;
+}
+
 /* COMPONENTS */
 
 .base-layout {
-  @apply flex h-screen max-h-screen flex-col gap-3 p-1.5;
+  @apply flex h-screen flex-col gap-5 p-1.5;
 }
 
 .base-layout > main {
   @apply grow;
+}
+
+.base-bg-div {
+  @apply bg-primary rounded p-3;
 }
 
 .base-btn {

@@ -32,7 +32,7 @@ export const UserCharacterList = () => {
 
   const combinedUserCharacterList = () => {
     if (reduxUserProfile.userCharacterList.length === 0)
-      return <p className="text-center">Keine Charaktere vorhanden</p>;
+      return <p className="text-center">Keine Charaktere vorhanden!</p>;
 
     return reduxUserProfile.userCharacterList.map((userCharacter) => {
       return classlist.map((classList) => {

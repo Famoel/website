@@ -62,7 +62,7 @@ export const Register = () => {
     <form
       action={CLIENT_ROUTES.ROOT.REGISTER}
       onSubmit={handleSubmit}
-      className="bg-primary flex flex-col gap-3 rounded p-3"
+      className="base-bg-div flex flex-col gap-3"
     >
       {msg.message && msg.flag === MESSAGE_FLAG.AUTH.REGISTER_USER && (
         <Message message={msg.message} isErrorMsg={msg.isErrorMsg} />

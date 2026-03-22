@@ -4,7 +4,7 @@ import { Navlink } from "./Navlink";
 
 export const Sidebar = () => {
   return (
-    <div className="bg-primary flex h-full flex-col gap-3 p-2">
+    <div className="bg-primary rounded flex h-full flex-col gap-3 p-2">
       {NAVI.map((nav, idx) => {
         if (nav.children) {
           return (

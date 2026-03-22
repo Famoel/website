@@ -1,7 +1,7 @@
 import { useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MESSAGE_FLAG } from "../../flags/message-flag";
-import { SESSION_FLAG } from "../../flags/session-flags";
+import { SESSION_FLAG } from "../../flags/session-flag";
 import { useAuth } from "../../hooks/fetch/useAuth";
 import { useSession } from "../../hooks/fetch/useSession";
 import { useMessage } from "../../hooks/useMessage";

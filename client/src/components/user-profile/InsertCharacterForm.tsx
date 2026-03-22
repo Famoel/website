@@ -77,7 +77,7 @@ export const InsertCharacterForm = () => {
   };
 
   return (
-    <div className="bg-primary flex min-h-50 w-full flex-col justify-between gap-2 rounded p-3 lg:w-80 xl:w-100">
+    <div className="base-bg-div flex min-h-50 w-full flex-col justify-between gap-2 lg:w-80 xl:w-100">
       <p className="text-center text-2xl font-bold underline underline-offset-2">
         Charakter eintragen
       </p>
