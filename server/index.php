@@ -38,6 +38,9 @@ $f3->route("GET /class-list/get-class-list", "ClassListController->getClassList"
 
 // user character
 $f3->route("POST /user-character/create-character", "UserProfileController->createCharacter");
-$f3->route("GET /user-character/user-character-list", "UserProfileController->userCharacterList");
+$f3->route("GET /user-character/user-character-list", "UserProfileController->getUserCharacterList");
+
+// planner | raid
+$f3->route("GET /planer/raid/get-raid-list", "RaidController->getRaidList");
 
 $f3->run();

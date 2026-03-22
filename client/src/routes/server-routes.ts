@@ -24,4 +24,10 @@ export const SERVER_ROUTES = {
     UPDATE_CHARACTER: "/user-character/update-character",
     DELETE_CHARACTER: "/user-character/delete-character",
   },
+
+  PLANER: {
+    RAID: {
+      GET_RAID_LIST: "/planer/raid/get-raid-list",
+    },
+  },
 };

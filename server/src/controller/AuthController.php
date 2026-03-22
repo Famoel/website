@@ -94,8 +94,8 @@ class AuthController extends MainController
         }
 
         $data = [
-            "isValid"  => true,
             "username" => $user["name"],
+            "isValid"  => true,
         ];
 
         echo json_encode($data);

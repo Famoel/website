@@ -14,11 +14,11 @@ export const NAVI: INavroute[] = [
     img: ICONS.calendar,
     children: [
       {
-        to: CLIENT_ROUTES.ROOT.REGISTER,
+        to: CLIENT_ROUTES.PROTECTED.PLANER.RAID_OVERVIEW,
         label: "- Raid Übersicht",
       },
       {
-        to: CLIENT_ROUTES.ROOT.REGISTER,
+        to: CLIENT_ROUTES.PROTECTED.PLANER.RAID_PLAN,
         label: "- Raid Planen",
       },
     ],
