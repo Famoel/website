@@ -28,6 +28,9 @@ export const SERVER_ROUTES = {
   PLANER: {
     RAID: {
       GET_RAID_LIST: "/planer/raid/get-raid-list",
+      GET_RAID_PLAN: "/planer/raid/get-raid-plan",
+      CREATE_RAID_PLAN: "/planer/raid/create-raid-plan",
+      ENTER_RAID: "/planer/raid/enter-raid",
     },
   },
 };

@@ -1,4 +1,6 @@
 <?php
+/* header("Content-Type: application/json"); */
+
 header("Access-Control-Allow-Origin: http://localhost:3001");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Methods: POST, GET, PUT, OPTIONS");
@@ -8,7 +10,7 @@ require_once "vendor/autoload.php";
 $f3 = \Base::instance();
 
 // config
-require_once "./src/settings.php";
+require_once "./src/constants.php";
 $f3->config("config.ini");
 $f3->config("db.ini");
 
@@ -42,5 +44,8 @@ $f3->route("GET /user-character/user-character-list", "UserProfileController->ge
 
 // planner | raid
 $f3->route("GET /planer/raid/get-raid-list", "RaidController->getRaidList");
+$f3->route("GET /planer/raid/get-raid-plan", "RaidController->getRaidPlan");
+$f3->route("POST /planer/raid/create-raid-plan", "RaidController->createRaidPlan");
+$f3->route("POST /planer/raid/enter-raid", "RaidController->enterRaid");
 
 $f3->run();

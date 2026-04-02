@@ -7,4 +7,11 @@ export const MESSAGE_FLAG = {
   USER_PROFILE: {
     CREATE_CHARACTER: "CREATE_CHARACTER",
   },
+
+  PLANER: {
+    RAID: {
+      CREATE_RAID_PLAN: "CREATE_RAID_PLAN",
+      ENTER_RAID: "ENTER_RAID",
+    },
+  },
 };

@@ -6,11 +6,11 @@ const initialState = {
 };
 
 const userProfileSlice = createSlice({
-  name: "user-profile",
+  name: "userProfile",
   initialState,
 
   reducers: {
-    updateUserCharacterList: (
+    setUserCharacterList: (
       state,
       { payload }: { payload: IUserCharacterList[] },
     ) => {
@@ -19,5 +19,5 @@ const userProfileSlice = createSlice({
   },
 });
 
-export const { updateUserCharacterList } = userProfileSlice.actions;
+export const { setUserCharacterList } = userProfileSlice.actions;
 export default userProfileSlice.reducer;

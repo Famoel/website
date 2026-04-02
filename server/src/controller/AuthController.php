@@ -22,6 +22,13 @@ class AuthController extends MainController
             return;
         }
 
+        if (! preg_match(PREGEX_CHARACTER_AND_NUMBER, $username)) {
+            $this->Message->setMessage("Der Benutzername darf nur Buchstaben, Zahlen und Unterstriche enthalten!", true);
+
+            echo json_encode($this->Message->getMessage());
+            return;
+        }
+
         if ($email !== $confirmEmail) {
             $this->Message->setMessage("Die Email Adressen stimmen nicht überein!", true);
 

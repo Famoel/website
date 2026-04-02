@@ -1,9 +1,9 @@
 export interface IUserCharacterList {
   id: number;
   username: string;
-  class_list_id: number;
-  character_name: string;
+  classListId: number;
+  characterName: string;
   typ: string;
-  is_deleted: number;
+  isDeleted: number;
   created: string;
 }

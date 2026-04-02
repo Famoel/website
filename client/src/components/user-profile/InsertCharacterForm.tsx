@@ -5,7 +5,7 @@ import { useClassList } from "../../hooks/fetch/useClassList";
 import { useUserProfile } from "../../hooks/fetch/useUserProfile";
 import { useMessage } from "../../hooks/useMessage";
 import type { IClassList } from "../../interface/class/IClassList";
-import { updateUserCharacterList } from "../../redux/slice/userProfileSlice";
+import { setUserCharacterList } from "../../redux/slice/userProfileSlice";
 import type { TRootState } from "../../redux/store";
 import { Message } from "../common/Message";
 
@@ -71,7 +71,7 @@ export const InsertCharacterForm = () => {
 
       /* update redux store */
       dispatch(
-        updateUserCharacterList(await getUserCharacterList(reduxUser.username)),
+        setUserCharacterList(await getUserCharacterList(reduxUser.username)),
       );
     }
   };

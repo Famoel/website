@@ -8,6 +8,8 @@ class MainController
     protected ClassListModel $ClassListModel;
     protected UserCharacterListModel $UserCharacterListModel;
     protected RaidListModel $RaidListModel;
+    protected RaidPlanModel $RaidPlanModel;
+    protected RaidEntryModel $RaidEntryModel;
     protected Message $Message;
 
     public function __construct(Base $f3)
@@ -16,12 +18,16 @@ class MainController
         $this->UsersModel   = new UsersModel($f3->get(DATABASE));
         $this->SessionModel = new SessionModel($f3->get(DATABASE));
 
-        $this->ChatModel              = new ChatModel($f3->get(DATABASE));
+        $this->ChatModel = new ChatModel($f3->get(DATABASE));
+
+        // character
         $this->ClassListModel         = new ClassListModel($f3->get(DATABASE));
         $this->UserCharacterListModel = new UserCharacterListModel($f3->get(DATABASE));
 
         // planer
-        $this->RaidListModel = new RaidListModel($f3->get(DATABASE));
+        $this->RaidListModel  = new RaidListModel($f3->get(DATABASE));
+        $this->RaidPlanModel  = new RaidPlanModel($f3->get(DATABASE));
+        $this->RaidEntryModel = new RaidEntryModel($f3->get(DATABASE));
 
         $this->Message = new Message();
     }

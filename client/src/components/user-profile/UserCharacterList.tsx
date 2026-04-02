@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useClassList } from "../../hooks/fetch/useClassList";
 import { useUserProfile } from "../../hooks/fetch/useUserProfile";
 import type { IClassList } from "../../interface/class/IClassList";
-import { updateUserCharacterList } from "../../redux/slice/userProfileSlice";
+import { setUserCharacterList } from "../../redux/slice/userProfileSlice";
 import type { TRootState } from "../../redux/store";
 
 export const UserCharacterList = () => {
@@ -26,7 +26,7 @@ export const UserCharacterList = () => {
 
     /* update redux store */
     dispatch(
-      updateUserCharacterList(await getUserCharacterList(reduxUser.username)),
+      setUserCharacterList(await getUserCharacterList(reduxUser.username)),
     );
   };
 
@@ -36,7 +36,7 @@ export const UserCharacterList = () => {
 
     return reduxUserProfile.userCharacterList.map((userCharacter) => {
       return classlist.map((classList) => {
-        if (classList.id === userCharacter.class_list_id) {
+        if (classList.id === userCharacter.classListId) {
           return (
             <div
               key={userCharacter.id}
@@ -54,15 +54,13 @@ export const UserCharacterList = () => {
                     alignItems: "center",
                   }}
                 ></div>
-                <p>{userCharacter.character_name}</p>
+                <p>{userCharacter.characterName}</p>
               </div>
               <p>{classList.name}</p>
               <p className="first-letter:uppercase">{userCharacter.typ}</p>
 
               <form onSubmit={(e) => handleDelete(userCharacter.id, e)}>
-                <button className="hover:text-text! bg-red-500 hover:bg-red-700">
-                  X
-                </button>
+                <button className="delete-btn">X</button>
               </form>
             </div>
           );
