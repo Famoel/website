@@ -31,7 +31,7 @@ input {
 }
 
 button {
-  @apply transform rounded px-3 py-0.5 font-bold text-black uppercase transition-all duration-300 ease-in hover:cursor-pointer;
+  @apply transform rounded px-3 py-0.5 font-bold uppercase transition-all duration-300 ease-in hover:cursor-pointer;
 }
 
 select {
@@ -40,20 +40,20 @@ select {
 
 label {
   @apply flex flex-col gap-1;
-}
 
-label p {
-  @apply font-bold;
+  p {
+    @apply font-bold;
+  }
 }
 
 /* COMPONENTS */
 
 .base-layout {
-  @apply flex h-screen flex-col gap-5 p-1.5;
-}
+  @apply flex h-screen flex-col gap-4 p-1.5;
 
-.base-layout > main {
-  @apply grow;
+  main {
+    @apply grow;
+  }
 }
 
 .base-bg-div {
@@ -61,7 +61,7 @@ label p {
 }
 
 .base-btn {
-  @apply bg-call-to-action hover:bg-call-to-action-hover;
+  @apply bg-call-to-action hover:bg-call-to-action-hover text-black;
 }
 
 .base-link {
@@ -72,9 +72,22 @@ label p {
   @apply text-text hover:text-slate-300;
 }
 
+.delete-btn {
+  @apply hover:text-text bg-red-500 text-black hover:bg-red-700;
+}
+
 .nav-link {
   @apply flex items-center gap-3 rounded-2xl bg-linear-to-r from-amber-700 to-amber-900 px-2 py-1 font-bold uppercase no-underline hover:bg-linear-to-r hover:from-amber-900 hover:to-amber-700;
 }
+
+.table td,
+.table th {
+  @apply border border-black px-2 py-1;
+}
+
+/* .table tr:nth-child(odd) {
+  @apply bg-secondary text-black;
+} */
 
 .msg {
   animation: fade-in 0.5s ease-in-out;

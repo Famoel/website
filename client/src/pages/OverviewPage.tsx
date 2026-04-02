@@ -2,7 +2,7 @@ import { Chat } from "../components/chat/Chat";
 
 export const OverviewPage = () => {
   return (
-    <div className="flex w-full h-[75vh] flex-wrap justify-between gap-3">
+    <div className="flex h-[75vh] w-full flex-wrap justify-between gap-3">
       {/* content */}
       <div className="grow overflow-auto">
         <p>content</p>
