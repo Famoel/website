@@ -1,41 +1,19 @@
-import { useEffect, useState, type SubmitEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useClassList } from "../../hooks/fetch/useClassList";
-import { useUserProfile } from "../../hooks/fetch/useUserProfile";
-import type { IClassList } from "../../interface/class/IClassList";
-import { setUserCharacterList } from "../../redux/slice/userProfileSlice";
+import { type SubmitEvent } from "react";
+import { useSelector } from "react-redux";
 import type { TRootState } from "../../redux/store";
 
 export const UserCharacterList = () => {
-  const [classlist, setClassList] = useState<IClassList[]>([]);
-  const reduxUser = useSelector((state: TRootState) => state.user);
+  const reduxClassList = useSelector((state: TRootState) => state.class);
   const reduxUserProfile = useSelector(
     (state: TRootState) => state.userProfile,
   );
-
-  const dispatch = useDispatch();
-  const { getClassList } = useClassList();
-  const { getUserCharacterList } = useUserProfile();
-
-  useEffect(() => {
-    init();
-  }, [reduxUser.username]);
-
-  const init = async () => {
-    setClassList(await getClassList());
-
-    /* update redux store */
-    dispatch(
-      setUserCharacterList(await getUserCharacterList(reduxUser.username)),
-    );
-  };
 
   const combinedUserCharacterList = () => {
     if (reduxUserProfile.userCharacterList.length === 0)
       return <p className="text-center">Keine Charaktere vorhanden!</p>;
 
     return reduxUserProfile.userCharacterList.map((userCharacter) => {
-      return classlist.map((classList) => {
+      return reduxClassList.classList.map((classList) => {
         if (classList.id === userCharacter.classListId) {
           return (
             <div

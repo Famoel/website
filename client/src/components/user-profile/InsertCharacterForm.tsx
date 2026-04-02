@@ -1,10 +1,8 @@
 import { useEffect, useState, type SubmitEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MESSAGE_FLAG } from "../../flags/message-flag";
-import { useClassList } from "../../hooks/fetch/useClassList";
 import { useUserProfile } from "../../hooks/fetch/useUserProfile";
 import { useMessage } from "../../hooks/useMessage";
-import type { IClassList } from "../../interface/class/IClassList";
 import { setUserCharacterList } from "../../redux/slice/userProfileSlice";
 import type { TRootState } from "../../redux/store";
 import { Message } from "../common/Message";
@@ -18,25 +16,17 @@ const initialForm = {
 
 export const InsertCharacterForm = () => {
   const [form, setForm] = useState(initialForm);
-  const [classList, setClassList] = useState<IClassList[]>([]);
+
   const reduxUser = useSelector((state: TRootState) => state.user);
+  const reduxClassList = useSelector((state: TRootState) => state.class);
   const dispatch = useDispatch();
 
   const { createUserCharacter, getUserCharacterList } = useUserProfile();
-  const { getClassList } = useClassList();
   const { msg, setMsg } = useMessage();
-
-  useEffect(() => {
-    init();
-  }, []);
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, username: reduxUser.username }));
   }, [form.username, reduxUser.username]);
-
-  const init = async () => {
-    setClassList(await getClassList());
-  };
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,7 +93,7 @@ export const InsertCharacterForm = () => {
         value={form.classId}
       >
         <option value={0}>-- Klasse auswählen --</option>
-        {classList.map((list) => (
+        {reduxClassList.classList.map((list) => (
           <option key={list.id} value={list.id}>
             {list.name}
           </option>
