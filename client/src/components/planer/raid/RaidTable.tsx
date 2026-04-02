@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useRaid } from "../../../hooks/fetch/planer/useRaid";
-import { setRaidPlan } from "../../../redux/slice/raidSlice";
+import { useSelector } from "react-redux";
 import type { TRootState } from "../../../redux/store";
 
 export const RaidTable = ({
@@ -12,17 +9,6 @@ export const RaidTable = ({
   canCancel: boolean;
 }) => {
   const reduxRaid = useSelector((state: TRootState) => state.raid);
-  const dispatch = useDispatch();
-
-  const { getRaidPlan } = useRaid();
-
-  useEffect(() => {
-    init();
-  }, []);
-
-  const init = async () => {
-    dispatch(setRaidPlan(Object.values(await getRaidPlan())));
-  };
 
   return (
     <>
