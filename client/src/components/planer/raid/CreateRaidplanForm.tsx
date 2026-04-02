@@ -27,7 +27,7 @@ export const CreateRaidplanForm = () => {
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, createdFrom: reduxUser.username }));
-  }, [form.createdFrom]);
+  }, [form.createdFrom, reduxUser.username]);
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();

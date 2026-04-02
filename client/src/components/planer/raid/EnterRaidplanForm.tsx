@@ -36,7 +36,7 @@ export const EnterRaidplanForm = () => {
     setForm((prev) => ({ ...prev, user: reduxUser.username }));
   }, [form.user]);
 
-  /* Get available class roles from class list id and character class id */
+  /* get available class roles from class list id and character class id */
   const getAvailableClassRoles = (
     classList: IClassList[],
     classId: number,

@@ -14,7 +14,7 @@ export const RaidPlanPage = () => {
 
   useEffect(() => {
     init();
-  }, [reduxUser.username]);
+  }, []);
 
   /* set data in redux store */
   const init = async () => {

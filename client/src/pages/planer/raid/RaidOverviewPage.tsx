@@ -19,6 +19,7 @@ export const RaidOverviewPage = () => {
   const { getClassList } = useClassList();
 
   useEffect(() => {
+    if (!reduxUser.username) return;
     init(reduxUser.username);
   }, [reduxUser.username]);
 
