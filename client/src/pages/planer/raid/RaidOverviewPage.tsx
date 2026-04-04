@@ -6,7 +6,7 @@ import { useRaid } from "../../../hooks/fetch/planer/useRaid";
 import { useClassList } from "../../../hooks/fetch/useClassList";
 import { useUserProfile } from "../../../hooks/fetch/useUserProfile";
 import { setClassList } from "../../../redux/slice/classListSlice";
-import { setRaidPlan } from "../../../redux/slice/raidSlice";
+import { setRaidEntry, setRaidPlan } from "../../../redux/slice/raidSlice";
 import { setUserCharacterList } from "../../../redux/slice/userProfileSlice";
 import type { TRootState } from "../../../redux/store";
 
@@ -15,7 +15,7 @@ export const RaidOverviewPage = () => {
   const dispatch = useDispatch();
 
   const { getUserCharacterList } = useUserProfile();
-  const { getRaidPlan } = useRaid();
+  const { getRaidPlan, getRaidEntry } = useRaid();
   const { getClassList } = useClassList();
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export const RaidOverviewPage = () => {
     dispatch(setClassList(await getClassList()));
     dispatch(setRaidPlan(Object.values(await getRaidPlan())));
     dispatch(setUserCharacterList(await getUserCharacterList(username)));
+    dispatch(setRaidEntry(Object.values(await getRaidEntry())));
   };
 
   return (

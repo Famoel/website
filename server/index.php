@@ -32,19 +32,20 @@ $f3->route("POST /session/start", "SessionController->startSession");
 $f3->route("POST /session/check", "SessionController->checkSession");
 
 // chat
-$f3->route("POST /chat/send", "ChatController->send");
 $f3->route("GET /chat/data", "ChatController->getData");
+$f3->route("POST /chat/send", "ChatController->send");
 
 // class list
 $f3->route("GET /class-list/get-class-list", "ClassListController->getClassList");
 
 // user character
-$f3->route("POST /user-character/create-character", "UserProfileController->createCharacter");
 $f3->route("GET /user-character/user-character-list", "UserProfileController->getUserCharacterList");
+$f3->route("POST /user-character/create-character", "UserProfileController->createCharacter");
 
 // planner | raid
 $f3->route("GET /planer/raid/get-raid-list", "RaidController->getRaidList");
 $f3->route("GET /planer/raid/get-raid-plan", "RaidController->getRaidPlan");
+$f3->route("GET /planer/raid/get-raid-entrys", "RaidController->getCurrentRaidEntrys");
 $f3->route("POST /planer/raid/create-raid-plan", "RaidController->createRaidPlan");
 $f3->route("POST /planer/raid/enter-raid", "RaidController->enterRaid");
 

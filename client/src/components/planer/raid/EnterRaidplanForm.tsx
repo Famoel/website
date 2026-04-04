@@ -1,19 +1,20 @@
 import { useEffect, useState, type SubmitEvent } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MESSAGE_FLAG } from "../../../flags/message-flag";
 import { useRaid } from "../../../hooks/fetch/planer/useRaid";
 import { useMessage } from "../../../hooks/useMessage";
 import type { IClassList } from "../../../interface/class/IClassList";
 import type { IRaidEntry } from "../../../interface/planer/raid/IRaidEntry";
+import { setRaidEntry } from "../../../redux/slice/raidSlice";
 import type { TRootState } from "../../../redux/store";
 import { Message } from "../../common/Message";
 
 const initialForm: IRaidEntry = {
-  raidId: 0,
+  raidPlanId: 0,
   user: "",
   characterName: "",
-  classListId: 0,
   characterRole: "",
+  classListId: 0,
   isDeleted: 0,
 };
 
@@ -29,12 +30,15 @@ export const EnterRaidplanForm = () => {
     (state: TRootState) => state.userProfile,
   );
 
+  /* update redux store */
+  const dispatch = useDispatch();
+
   const { msg, setMsg } = useMessage();
-  const { enterRaid } = useRaid();
+  const { enterRaid, getRaidEntry } = useRaid();
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, user: reduxUser.username }));
-  }, [form.user]);
+  }, [form.user, reduxUser.username]);
 
   /* get available class roles from class list id and character class id */
   const getAvailableClassRoles = (
@@ -59,7 +63,7 @@ export const EnterRaidplanForm = () => {
 
     let isValid = true;
 
-    /* Check if form is valid */
+    /* check if form is valid */
     Object.entries(form).forEach(([key, value]) => {
       if (key === "isDeleted") return;
 
@@ -77,9 +81,21 @@ export const EnterRaidplanForm = () => {
     if (!isValid) return;
 
     const resEnterRaid = await enterRaid(form);
+
+    if (resEnterRaid.message) {
+      setMsg({
+        message: resEnterRaid.message,
+        isErrorMsg: resEnterRaid.isErrorMsg,
+        flag: MESSAGE_FLAG.PLANER.RAID.ENTER_RAID,
+      });
+    }
+
+    /* reset form and update raid entry in redux store */
+    setForm(initialForm);
+    dispatch(setRaidEntry(Object.values(await getRaidEntry())));
   };
 
-  /* Sort raidplan by id */
+  /* sort raidplan by id */
   const sortedRaidPlan = [...reduxRaid.raidPlan].sort((a, b) => a.id - b.id);
 
   return (
@@ -88,14 +104,15 @@ export const EnterRaidplanForm = () => {
         <Message isErrorMsg={msg.isErrorMsg} message={msg.message} />
       )}
 
-      {/* Raid ID  */}
+      {/* raid ID  */}
       <label htmlFor="raidId">
         <p>Raid ID:</p>
         <select
           id="raidId"
           onChange={(e) =>
-            setForm((prev) => ({ ...prev, raidId: Number(e.target.value) }))
+            setForm((prev) => ({ ...prev, raidPlanId: Number(e.target.value) }))
           }
+          value={form.raidPlanId}
         >
           <option value={0}>-- auswählen --</option>
           {sortedRaidPlan.map((raid, idx) => (
@@ -106,7 +123,7 @@ export const EnterRaidplanForm = () => {
         </select>
       </label>
 
-      {/* Character Name  */}
+      {/* character name  */}
       <label htmlFor="userCharacter">
         <p>Charakter:</p>
         <select
@@ -125,6 +142,7 @@ export const EnterRaidplanForm = () => {
               getAvailableClassRoles(reduxClassList.classList, classId),
             );
           }}
+          value={form.characterName}
         >
           <option value={""}>-- auswählen --</option>
           {reduxUserProfile.userCharacterList.map((character, idx) => (
@@ -138,7 +156,7 @@ export const EnterRaidplanForm = () => {
         </select>
       </label>
 
-      {/* Character Role */}
+      {/* character role */}
       <label htmlFor="characterRole">
         <p>Rolle:</p>
         <select

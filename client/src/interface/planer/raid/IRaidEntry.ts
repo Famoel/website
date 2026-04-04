@@ -1,8 +1,8 @@
 export interface IRaidEntry {
-  raidId: number;
+  raidPlanId: number;
   user: string;
   characterName: string;
-  classListId: number;
   characterRole: string;
+  classListId: number;
   isDeleted: number;
 }

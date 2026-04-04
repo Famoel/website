@@ -35,6 +35,20 @@ export const useRaid = () => {
     return [];
   };
 
+  const getRaidEntry = async (): Promise<IRaidEntry[]> => {
+    try {
+      const res = await AXIOS_INSTANCE.get(
+        SERVER_ROUTES.PLANER.RAID.GET_RAID_ENTRYS,
+      );
+
+      if (res.status === 200) return res.data;
+    } catch (error) {
+      console.error("Get Raid Entry: ", error);
+    }
+
+    return [];
+  };
+
   const createRaidPlan = async (
     form: IRaidplanForm,
   ): Promise<IMessage & { isValid: boolean }> => {
@@ -63,8 +77,9 @@ export const useRaid = () => {
     } catch (error) {
       console.error("Enter Raid: ", error);
     }
+
     return { isErrorMsg: true, message: "" };
   };
 
-  return { getRaidList, createRaidPlan, getRaidPlan, enterRaid };
+  return { getRaidList, getRaidPlan, getRaidEntry, createRaidPlan, enterRaid };
 };
