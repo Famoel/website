@@ -9,6 +9,6 @@ class ClassListModel extends MainModel
             FROM `class_list` ORDER BY `name` ASC"
         );
 
-        return (array) $select;
+        return (array) $select ?? [];
     }
 }
